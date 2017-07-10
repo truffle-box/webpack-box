@@ -3,7 +3,7 @@ Example webpack project with Truffle. Includes contracts, migrations, tests, use
 
 ## Usage
 
-To initialize a project with this exapmple, run `truffle init webpack` inside an empty directory.
+To initialize a project with this example, run `truffle init webpack` inside an empty directory.
 
 ## Building and the frontend
 
