@@ -1,29 +1,59 @@
-# truffle-init-webpack
-Example webpack project with Truffle. Includes contracts, migrations, tests, user interface and webpack build pipeline.
+# Webpack Truffle Box
 
-## Usage
+This box it our most bare official implementation with Webpack. Includes contracts, migrations, tests, user interface and webpack build pipeline.
 
-To initialize a project with this example, run `truffle init webpack` inside an empty directory.
+## Installation
 
-## Building and the frontend
+1. Install Truffle globally.
+    ```javascript
+    npm install -g truffle
+    ```
 
-1. First run `truffle compile`, then run `truffle migrate` to deploy the contracts onto your network of choice (default "development").
-1. Then run `npm run dev` to build the app and serve it on http://localhost:8080
+2. Download the box. This also takes care of installing the necessary dependencies.
+    ```javascript
+    truffle unbox webpack
+    ```
 
-## Possible upgrades
+3. Run the development console.
+    ```javascript
+    truffle develop
+    ```
 
-* Use the webpack hotloader to sense when contracts or javascript have been recompiled and rebuild the application. Contributions welcome!
+4. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with `truffle`.
+    ```javascript
+    compile
+    migrate
+    ```
 
-## Common Errors
+5. Run the webpack server for front-end hot reloading (outside the development console). Smart contract changes must be manually recompiled and migrated.
+    ```javascript
+    // Serves the front-end on http://localhost:8080
+    npm run dev
+    ```
 
-* **Error: Can't resolve '../build/contracts/MetaCoin.json'**
+6. Truffle can run tests written in Solidity or JavaScript against your smart contracts. Note the command varies slightly if you're in or outside of the development console.
+  ```javascript
+  // If inside the development console.
+  test
 
-This means you haven't compiled or migrated your contracts yet. Run `truffle compile` and `truffle migrate` first.
+  // If outside the development console..
+  truffle test
+  ```
 
-Full error:
+## FAQ
 
-```
-ERROR in ./app/main.js
-Module not found: Error: Can't resolve '../build/contracts/MetaCoin.json' in '/Users/tim/Documents/workspace/Consensys/test3/app'
- @ ./app/main.js 11:16-59
-```
+* __How do I use this with the EthereumJS TestRPC?__
+
+    It's as easy as modifying the config file! [Check out our documentation on adding network configurations](http://truffleframework.com/docs/advanced/configuration#networks). Depending on the port you're using, you'll also need to update lines 96 and 98 of `app/javascripts/app.js`.
+
+* __I'm encountering this error: Error: Can't resolve '../build/contracts/MetaCoin.json'__
+
+  This means you haven't compiled or migrated your contracts yet. Run `truffle develop`, `compile` and `migrate` first.
+
+  Full error:
+
+  ```
+  ERROR in ./app/main.js
+  Module not found: Error: Can't resolve '../build/contracts/MetaCoin.json' in '/Users/tim/Documents/workspace/Consensys/test3/app'
+   @ ./app/main.js 11:16-59
+  ```
