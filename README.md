@@ -42,9 +42,9 @@ This box it our most bare official implementation with Webpack. Includes contrac
 
 ## FAQ
 
-* __How do I use this with the EthereumJS TestRPC?__
+* __How do I use this with Ganache?__
 
-    It's as easy as modifying the config file! [Check out our documentation on adding network configurations](http://truffleframework.com/docs/advanced/configuration#networks). Depending on the port you're using, you'll also need to update lines 96 and 98 of `app/javascripts/app.js`.
+    The config you need is already in place in `truffle.js`! Just run your `truffle` commands as usual, but add `--network ganache` to your options. [For more info, check out our documentation on adding network configurations](http://truffleframework.com/docs/advanced/configuration#networks). Depending on the port you're using and whether or not you're using MetaMask, you may also need to update lines 106 and 112 of `app/scripts/index.js`.
 
 * __I'm encountering this error: Error: Can't resolve '../build/contracts/MetaCoin.json'__
 
