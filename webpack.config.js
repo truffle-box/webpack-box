@@ -26,6 +26,20 @@ module.exports = {
           presets: ['env'],
           plugins: ['transform-react-jsx', 'transform-object-rest-spread', 'transform-runtime']
         }
+      },
+      {
+        test: /\.sol/,
+        use: [
+          {
+            loader: 'json-loader'
+          },
+          {
+            loader: 'truffle-solidity-loader',
+            options: {
+              network: 'ganache'
+            }
+          }
+        ]
       }
     ]
   }
