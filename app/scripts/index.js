@@ -6,7 +6,7 @@ import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
-import metaCoinArtifact from '../../contracts/MetaCoin.sol' // or '../../build/contracts/MetaCoin.json'
+import metaCoinArtifact from '../../contracts/MetaCoin.sol' // --> '../../build/contracts/MetaCoin.json'
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 const MetaCoin = contract(metaCoinArtifact)
