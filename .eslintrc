@@ -1,10 +1,6 @@
 {
-  "parser": "babel-eslint",
   "extends": [
     "standard"
-  ],
-  "plugins": [
-    "babel"
   ],
   "rules": {
     "no-alert"             : 0,

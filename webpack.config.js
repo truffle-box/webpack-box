@@ -17,15 +17,20 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
-      { test: /\.s?css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ] },
+      { test: /\.s?css$/, use: [ 'style-loader', 'css-loader' ] },
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env'],
-          plugins: ['transform-react-jsx', 'transform-object-rest-spread', 'transform-runtime']
-        }
+        test: /\.sol/,
+        use: [
+          {
+            loader: 'json-loader'
+          },
+          {
+            loader: 'truffle-solidity-loader',
+            options: {
+              network: 'ganache'
+            }
+          }
+        ]
       }
     ]
   }
