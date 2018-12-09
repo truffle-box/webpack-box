@@ -4,7 +4,7 @@
   "description": "Frontend example using truffle v3",
   "scripts": {
     "test": "truffle test",
-    "lint": "echo lint disabled",
+    "lint": "eslint ./",
     "prepare": "truffle compile && npm test && npm run lint && webpack-cli --config ./webpack.config.js",
     "build": "npm install",
     "dev": "webpack-dev-server"
