@@ -1,7 +1,7 @@
-MetaCoin = artifacts.require("MetaCoin")
-RelayHub = artifacts.require( "RelayHub")
+var MetaCoin = artifacts.require('MetaCoin')
+var RelayHub = artifacts.require( "./tabookey-gasless/contracts/RelayHub.sol")
 
-describe("deposit", async () => {
+describe("MetaCoin", async () => {
 	it( "deposit the MetaCoin on relay hub", async() => {
 		meta = await MetaCoin.at("0x9b1f7f645351af3631a656421ed2e40f2802e6c0" )
 		console.log( "meta adddr=",meta.address)

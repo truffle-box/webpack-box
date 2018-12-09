@@ -1,6 +1,8 @@
-# Webpack Truffle Box
+# Webpack Truffle Box - With Gasless support
 
 This box it our most bare official implementation with Webpack. Includes contracts, migrations, tests, user interface and webpack build pipeline.
+
+This package was modified to support gasless transactions.
 
 ## Installation
 
@@ -8,6 +10,15 @@ This box it our most bare official implementation with Webpack. Includes contrac
     ```javascript
     npm install -g truffle
     ```
+
+1.5 Download and install `tabookey-gasless` project:
+	``javascript
+	git checkout https://github.com/tabookey-dev/tabookey-gasless
+	cd tabookey-gasless
+	npm install
+	./dock/run.sh ./restart-relay.sh
+	```
+	(see README.md: you can skip the docker wrapper and run `./restart-relay.sh` directly if you have `solc` and `go` installed)
 
 2. Download the box. This also takes care of installing the necessary dependencies.
     ```javascript
