@@ -4,6 +4,7 @@ import '../styles/app.css'
 // Import libraries we need.
 import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
+import { default as RelayClient } from 'tabookey-gasless'
 
 // Import our contract artifacts and turn them into usable abstractions.
 import metaCoinArtifact from '../../build/contracts/MetaCoin.json'
@@ -18,11 +19,21 @@ let accounts
 let account
 
 const App = {
+
   start: function () {
     const self = this
 
+	var relayclient = new RelayClient(web3, {
+		verbose:true,
+			txfee: 12,
+			force_gasPrice: 1000000,
+			force_gasLimit: 1000000
+	} )
+
+	this.MetaCoin = MetaCoin
     // Bootstrap the MetaCoin abstraction for Use.
     MetaCoin.setProvider(web3.currentProvider)
+	relayclient.hook(MetaCoin)
 
     // Get the initial account balance so it can be displayed.
     web3.eth.getAccounts(function (err, accs) {
