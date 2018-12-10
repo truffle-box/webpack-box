@@ -7,7 +7,7 @@
     "lint": "eslint ./",
     "prepare": "truffle compile && npm test && npm run lint && webpack-cli --config ./webpack.config.js",
     "build": "npm install",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --host 0.0.0.0"
   },
   "author": "Douglas von Kohorn",
   "license": "MIT",
