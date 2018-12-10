@@ -13,6 +13,7 @@ contract MetaCoin
 is RelayRecipient
  {
 
+ 	function getDeposit() public view returns (uint) { return (RelayHub(relay_hub)).balanceOf(this); }
     function may_relay(address /*relay*/, address from, bytes /*encoded_function*/ ) public view returns(uint32) {
 	return 0;
     	//allow free calls for token holders..
