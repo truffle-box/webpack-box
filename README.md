@@ -6,19 +6,13 @@ This package was modified to support gasless transactions.
 
 ## Installation
 
+For gasless sample, checkout instead the https://github.com/tabookey-dev/tabookey-gasless project.
+From there, starting the web interface with `./restart-relay.sh web` will download, install and run this project.
+
 1. Install Truffle globally.
     ```javascript
     npm install -g truffle
     ```
-
-1.5 Download and install `tabookey-gasless` project:
-	``javascript
-	git checkout https://github.com/tabookey-dev/tabookey-gasless
-	cd tabookey-gasless
-	npm install
-	./dock/run.sh ./restart-relay.sh
-	```
-	(see README.md: you can skip the docker wrapper and run `./restart-relay.sh` directly if you have `solc` and `go` installed)
 
 2. Download the box. This also takes care of installing the necessary dependencies.
     ```javascript
