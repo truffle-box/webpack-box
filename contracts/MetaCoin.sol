@@ -9,18 +9,22 @@ import "./ConvertLib.sol";
 // coin/token contracts. If you want to create a standards-compliant
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
-contract MetaCoin 
-is RelayRecipient
+contract MetaCoin is RelayRecipient
  {
 
  	function getDeposit() public view returns (uint) { return (RelayHub(relay_hub)).balanceOf(this); }
-    function may_relay(address /*relay*/, address from, bytes /*encoded_function*/ ) public view returns(uint32) {
-	return 0;
+	function accept_relayed_call(address /*relay*/, address from, bytes /*encoded_function*/, uint /*gas_price*/, uint /*transaction_fee*/ ) external view returns(uint32) {
+
+		return 0;
     	//allow free calls for token holders..
     	if ( balances[from] > 0 ) return 0;
 
     	// prevent anyone else.
 		return 99;
+	}
+
+	//nothing to be done post-call. still, we must implement this method.
+	function post_relayed_call(address /*relay*/ , address /*from*/, bytes /*encoded_function*/, bool /*success*/, uint /*used_gas*/, uint /*transaction_fee*/ ) external {
 	}
 
 	mapping (address => uint) balances;
