@@ -8,9 +8,9 @@ contract('MetaCoin', async () => {
 
     let hubaddr
     try {
-      hubaddr = await meta.get_relay_hub()
+      hubaddr = await meta.get_hub_addr()
     } catch (e) {
-      assert.ok(0, 'RelayHub not deployed. must restart it from tabookey-gasless project itself')
+      assert.ok(0, 'RelayHub not deployed. must restart it from tabookey-gasless project itself: '+e)
     }
     console.log('hub addr=', hubaddr)
     let hub = RelayHub.at(hubaddr)

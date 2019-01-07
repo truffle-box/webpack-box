@@ -12,7 +12,6 @@ import "./ConvertLib.sol";
 contract MetaCoin is RelayRecipient
  {
 
- 	function getDeposit() public view returns (uint) { return (RelayHub(relay_hub)).balanceOf(this); }
 	function accept_relayed_call(address /*relay*/, address from, bytes /*encoded_function*/, uint /*gas_price*/, uint /*transaction_fee*/ ) external view returns(uint32) {
 
 		return 0;
@@ -36,11 +35,12 @@ contract MetaCoin is RelayRecipient
 
 	constructor() public {
 		balances[tx.origin] = 10000;
-		init_relay_hub(0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B);
+		init_relay_hub(RelayHub(0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B)); //local
 	}
 
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
-		fill_initial();
+		fill_initial(get_sender());
+		fill_initial(receiver);
 		require (balances[get_sender()] >= amount);
 		balances[get_sender()] -= amount;
 		balances[receiver] += amount;
@@ -53,17 +53,17 @@ contract MetaCoin is RelayRecipient
 	}
 
 	function getBalance(address addr) public view returns(uint) {
-		fill_initial();
+		fill_initial(addr);
 
 		return balances[addr];
 	}
 
-	//this is require to simplify our test: we "air-drop" each new account with a lump of coins.
+	//this is required to simplify our test: we "air-drop" each new account with a lump of coins.
 	// in a real project, of course, there are better mechanism to assign coins to users.
-	function fill_initial() internal {
-		if ( !initial_fund[get_sender()] ) {
-			balances[get_sender()] = 10000;
-			initial_fund[get_sender()] = true;
+	function fill_initial(address addr) internal {
+		if ( !initial_fund[addr] ) {
+			balances[addr] += 10000;
+			initial_fund[addr] = true;
 		}
 	}
 }

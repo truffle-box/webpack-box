@@ -49,7 +49,6 @@ const App = {
     var relayclient = new RelayClient(web3, {
       verbose: true,
       txfee: 12,
-      force_gasPrice: 1000000,
       force_gasLimit: 1000000
     })
 

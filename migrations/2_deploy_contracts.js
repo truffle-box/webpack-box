@@ -6,7 +6,12 @@ module.exports = function (deployer) {
   var meta
   deployer.deploy(ConvertLib)
   deployer.link(ConvertLib, MetaCoin)
-  deployer.deploy(MetaCoin).then(dep => {
+  future = deployer.deploy(MetaCoin)
+  if ( web3.version.network < 100000 ) {
+  	console.log( "not ganache. not attempting to fund and depositFor.." )
+  	return
+  }
+  future.then(dep => {
     meta = dep
     return RelayHub.at('0x254dffcd3277c0b1660f6d42efbb754edababc2b')
   }).then(rhub => {
@@ -14,7 +19,7 @@ module.exports = function (deployer) {
     return rhub.depositFor(meta.address, { value: 1e17 })
   }).then(ret => {
     console.log('depositFor completed ')
-    return meta.getDeposit.call()
+    return meta.get_recipient_balance.call()
   }).then((value) => {
     console.log('getDeposit(', meta.address, ') = ', value.toNumber())
   }).catch(e => {
