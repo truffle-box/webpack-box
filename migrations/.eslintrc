@@ -1,6 +1,0 @@
-{
-  "globals": {
-    "artifacts": true,
-    "deployer": true
-  }
-}

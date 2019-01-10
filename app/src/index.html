@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MetaCoin | Truffle Webpack Demo w/ Frontend</title>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 12px;
+    }
+  </style>
+  <body>
+    <h1>MetaCoin — Example Truffle Dapp</h1>
+    <p>You have <strong class="balance">loading...</strong> META</p>
+
+    <h1>Send MetaCoin</h1>
+
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" placeholder="e.g. 95" />
+
+    <label for="receiver">To address:</label>
+    <input
+      type="text"
+      id="receiver"
+      placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
+    />
+
+    <button onclick="App.sendCoin()">Send MetaCoin</button>
+
+    <p id="status"></p>
+    <p>
+      <strong>Hint:</strong> open the browser developer console to view any
+      errors and warnings.
+    </p>
+    <script src="index.js"></script>
+  </body>
+</html>

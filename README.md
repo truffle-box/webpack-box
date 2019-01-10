@@ -1,16 +1,21 @@
 # Webpack Truffle Box
 
-This box it our most bare official implementation with Webpack. Includes contracts, migrations, tests, user interface and webpack build pipeline.
+This box is our most bare official implementation with Webpack.
+
+Includes contracts, migrations, tests, user interface, and webpack build pipeline.
 
 ## Installation
 
-1. Install Truffle globally.
+First ensure you are in a new and empty directory.
+
+1. Run the `unbox` command via `npx` and skip to step 3.
+   ```js
+   npx truffle unbox webpack
+   ```
+
+2. Alternatively, you can install Truffle globally and run the `unbox` command.
     ```javascript
     npm install -g truffle
-    ```
-
-2. Download the box. This also takes care of installing the necessary dependencies.
-    ```javascript
     truffle unbox webpack
     ```
 
@@ -25,35 +30,34 @@ This box it our most bare official implementation with Webpack. Includes contrac
     migrate
     ```
 
-5. Run the webpack server for front-end hot reloading (outside the development console). Smart contract changes must be manually recompiled and migrated.
+5. In the `app` directory, we build and run our frontend. Smart contract changes must be manually recompiled and migrated.
     ```javascript
-    // Serves the front-end on http://localhost:8080
+    // in another terminal (i.e. not in the truffle develop prompt)
+    cd app
     npm run dev
     ```
 
 6. Truffle can run tests written in Solidity or JavaScript against your smart contracts. Note the command varies slightly if you're in or outside of the development console.
-  ```javascript
-  // If inside the development console.
-  test
+    ```javascript
+    // inside the development console.
+    test
 
-  // If outside the development console..
-  truffle test
-  ```
+    // outside the development console..
+    truffle test
+    ```
+
+7. To build the application for production, use the build script in the `app` folder. A production build will be in the `app/dist` folder.
+    ```javascript
+    // ensure you are inside the client directory when running this
+    npm run build
+    ```
 
 ## FAQ
 
-* __How do I use this with Ganache?__
+* __Where is my production build?__
 
-    The config you need is already in place in `truffle.js`! Just run your `truffle` commands as usual, but add `--network ganache` to your options. [For more info, check out our documentation on adding network configurations](http://truffleframework.com/docs/advanced/configuration#networks). Depending on the port you're using and whether or not you're using MetaMask, you may also need to update lines 106 and 112 of `app/scripts/index.js`.
+    The production build will be in the `app/dist` folder after running `npm run build` in the `app` folder.
 
-* __I'm encountering this error: Error: Can't resolve '../build/contracts/MetaCoin.json'__
+* __Where can I find more documentation?__
 
-  This means you haven't compiled or migrated your contracts yet. Run `truffle develop`, `compile` and `migrate` first.
-
-  Full error:
-
-  ```
-  ERROR in ./app/main.js
-  Module not found: Error: Can't resolve '../build/contracts/MetaCoin.json' in '/Users/tim/Documents/workspace/Consensys/test3/app'
-   @ ./app/main.js 11:16-59
-  ```
+    This box is a marriage of [Truffle](http://truffleframework.com/) and a [Webpack](https://webpack.js.org/) setup. Either one would be a great place to start!
