@@ -1,5 +1,11 @@
 {
-  "ignore": ["README.md", "box-img-lg.png", "box-img-sm.png", ".github"],
+  "ignore": [
+    "README.md",
+    "box-img-lg.png",
+    "box-img-sm.png",
+    ".github",
+    "LICENSE"
+  ],
   "commands": {
     "Compile": "truffle compile",
     "Migrate": "truffle migrate",
