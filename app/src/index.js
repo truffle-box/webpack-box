@@ -17,6 +17,12 @@ const App = {
         metaCoinArtifact.abi,
         deployedNetwork.address,
       );
+      
+      // refresh balance and set status upon emitted event
+      this.meta.events.Transfer().on('data', (event) => {
+      this.refreshBalance(); 
+      this.setStatus("Transaction complete!");
+      })
 
       // get accounts
       const accounts = await web3.eth.getAccounts();
@@ -44,9 +50,6 @@ const App = {
 
     const { sendCoin } = this.meta.methods;
     await sendCoin(receiver, amount).send({ from: this.account });
-
-    this.setStatus("Transaction complete!");
-    this.refreshBalance();
   },
 
   setStatus: function(message) {
