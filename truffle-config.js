@@ -9,8 +9,8 @@
  * truffleframework.com/docs/advanced/configuration
  *
  * To deploy via Infura you'll need a wallet provider (like truffle-hdwallet-provider)
- * to sign your transactions before they're sent to a remote public node. Infura API
- * keys are available for free at: infura.io/register
+ * to sign your transactions before they're sent to a remote public node. Infura accounts
+ * are available for free at: infura.io/register.
  *
  * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
  * public/private key pairs. If you're publishing your code to GitHub make sure you load this
@@ -61,7 +61,7 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/${infuraKey}`),
+      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
       // network_id: 3,       // Ropsten's id
       // gas: 5500000,        // Ropsten has a lower block limit than mainnet
       // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
